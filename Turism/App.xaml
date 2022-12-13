@@ -1,0 +1,22 @@
+﻿<Application x:Class="Turism.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Turism"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style x:Key="tbSearch" TargetType="TextBlock">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="Comic Sans MS"/>
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="Margin" Value="0 0 10 0"/>
+            </Style.Setters>
+        </Style>
+        <Style x:Key="cbSearch" TargetType="CheckBox">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="Comic Sans MS"/>
+                <Setter Property="FontSize" Value="22"/>
+                <Setter Property="Margin" Value="0 0 10 0"/>
+            </Style.Setters>
+        </Style>
+    </Application.Resources>
+</Application>
