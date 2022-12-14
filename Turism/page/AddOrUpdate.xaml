@@ -1,0 +1,36 @@
+﻿<Page x:Class="Turism.AddOrUpdate"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Turism"
+      mc:Ignorable="d" 
+     d:DesignHeight="640" d:DesignWidth="1200" Background="White"
+      Title="AddOrUpdate">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Name="Header" Grid.Row="0" FontFamily="Comic Sans MS" FontSize="36" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">Добавление нового отеля</TextBlock>
+        <Button Style="{DynamicResource ButtonStyle}" Content="Назад" VerticalAlignment="Center" HorizontalAlignment="Right" Click="Button_Click"></Button>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Наименование" Margin="2.5" FontFamily="Comic Sans MS" FontSize="18"/>
+                <TextBox Name="tbName" Margin="2.5" Width="190" MaxLength="100" FontSize="18"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Количество звёзд" Margin="2.5" FontFamily="Comic Sans MS" FontSize="18"/>
+                <TextBox Name="tbStars" Margin="2.5" Width="30" MaxLength="1" FontSize="18" PreviewTextInput="tbStars_PreviewTextInput"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Страна" Margin="2.5" FontFamily="Comic Sans MS" FontSize="18"/>
+                <ComboBox Name="cbCountry" Width="150" Margin="2.5"/>
+            </StackPanel>
+            <TextBlock FontFamily="Comic Sans MS" FontSize="18" HorizontalAlignment="Center">~ Описание ~</TextBlock>
+            <TextBox Name="tbDescription" TextWrapping="Wrap" AcceptsReturn="True" Height="200" Width="450"/>
+            <Button Name="btAdd" Content="Добавить новый отель" Style="{StaticResource ResourceKey=ButtonStyle}" Width="180" Click="btAdd_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -23,7 +23,7 @@ namespace Turism
         public MainWindow()
         {
             InitializeComponent();
-
+            BaseClass.BD = new Entities();
             FrameClass.MainFrame = fMain;
             FrameClass.MainFrame.Navigate(new ToursPage());
         }

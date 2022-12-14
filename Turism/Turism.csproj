@@ -35,8 +35,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,12 +65,65 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="page\AddOrUpdate.xaml.cs">
+      <DependentUpon>AddOrUpdate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="class\BaseClass.cs" />
+    <Compile Include="BD.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BD.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="class\ForTour.cs" />
+    <Compile Include="class\ForHotel.cs" />
+    <Compile Include="Hotel.cs">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HotelComment.cs">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HotelImage.cs">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HotelOfTour.cs">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="class\PageChange.cs" />
     <Compile Include="page\HotelsPage.xaml.cs">
       <DependentUpon>HotelsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="page\ToursPage.xaml.cs">
       <DependentUpon>ToursPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tour.cs">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Type.cs">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TypeOfTour.cs">
+      <DependentUpon>BD.tt</DependentUpon>
+    </Compile>
+    <Page Include="page\AddOrUpdate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="page\HotelsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -101,6 +164,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="BD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BD.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BD.edmx.diagram">
+      <DependentUpon>BD.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -108,6 +179,44 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>BD.Context.cs</LastGenOutput>
+      <DependentUpon>BD.edmx</DependentUpon>
+    </Content>
+    <Content Include="BD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BD.edmx</DependentUpon>
+      <LastGenOutput>BD.cs</LastGenOutput>
+    </Content>
+    <Resource Include="images\Болгарское наследие.jpg" />
+    <Resource Include="images\Волшебный Восток.jpg" />
+    <Resource Include="images\Город с большими амбициями.jpg" />
+    <Resource Include="images\Город четырех ворот.jpg" />
+    <Resource Include="images\Древний Минск.jpg" />
+    <Resource Include="images\Жемчужина Татарстана.jpg" />
+    <Resource Include="images\Знакомьтесь, Амстердам!.jpg" />
+    <Resource Include="images\Из Алании к загадочным пещерам Алтынбешик.jpg" />
+    <Resource Include="images\Многоликий Сувон.jpg" />
+    <Resource Include="images\Москва поэтическая.jpg" />
+    <Resource Include="images\Незабываемый Дели.jpg" />
+    <Resource Include="images\По старому Таллину.jpg" />
+    <Resource Include="images\Романтика белых ночей и разводных мостов.jpg" />
+    <Resource Include="images\Свидание с Хельсинки.jpg" />
+    <Resource Include="images\Сердце Ирана.jpg" />
+    <Resource Include="images\Сердце Северной Карелии.jpg" />
+    <Resource Include="images\Старый город.jpg" />
+    <Resource Include="images\Столица страны Утренней Свежести.jpg" />
+    <Resource Include="images\Страна идеальной гармонии.jpg" />
+    <Resource Include="images\Урбанистическая Бразилия.jpg" />
+    <Resource Include="images\Финская крепость.jpg" />
+    <Resource Include="images\Финский романтизм.jpg" />
+    <Resource Include="Resources\picture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

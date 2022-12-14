@@ -9,6 +9,75 @@
       Title="HotelsPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="120"/>
+            <RowDefinition/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" FontFamily="Comic Sans MS" FontSize="36" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">Отели</TextBlock>
+        <Button Style="{DynamicResource ButtonStyle}" Content="Назад" VerticalAlignment="Center" HorizontalAlignment="Right" Click="Button_Click"></Button>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontFamily="Comic Sans MS" FontSize="18">Количество записей:</TextBlock>
+                    <TextBlock Name="tbCountZ" FontFamily="Comic Sans MS" FontSize="18" Foreground="#fac716"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontFamily="Comic Sans MS" FontSize="18">Количество страниц:</TextBlock>
+                    <TextBlock Name="tbCountS" FontFamily="Comic Sans MS" FontSize="18" Foreground="#fac716"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontFamily="Comic Sans MS" FontSize="18">Текущая страница:</TextBlock>
+                    <TextBlock Name="tbCurrentS" FontFamily="Comic Sans MS" FontSize="18" Foreground="#fac716"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Name="Add" Style="{DynamicResource ButtonStyle}" Content="Добавить запись" Margin="2,5" Click="Add_Click"></Button>
+                <Button Name="Delete" Style="{DynamicResource ButtonStyle}" Content="Удалить запись" Margin="2,5" Click="Delete_Click"></Button>
+            </StackPanel>
+        </Grid>
+        <DataGrid x:Name="dgHotel" Grid.Row="2" CanUserAddRows="False" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Наименование" Binding="{Binding Name}" Width="2*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кол-во звёзд" Binding="{Binding CountOfStars}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Страна" Binding="{Binding Country.Name}" Width="2*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Кол-во туров" Binding="{Binding CountTour}" Width="*"></DataGridTextColumn>
+                <DataGridTemplateColumn Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="btnUpd" Uid="{Binding Id}" Content="Изменить" Style="{StaticResource ResourceKey=ButtonStyle}" Height="26" Width="80" Click="btnUpd_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="20">
+                <TextBlock Text="Кол-во записей на 1 странице: " FontFamily="Comic Sans MS" FontSize="16"/>
+                <TextBox x:Name="tbSCount" Width="40" PreviewTextInput="tbSCount_PreviewTextInput" TextChanged="tbSCount_TextChanged"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Name="txtNextFirst" Uid="next" Visibility="{Binding VisibleButton[0]}" Text="  &#171;  " MouseDown="txtNextFirst_MouseDown" FontFamily="Comic Sans MS" FontSize="20"/>
+                <TextBlock Name="txtPrev" Uid="prev" Text=" &lt; " MouseDown="GoPage_MouseDown" FontFamily="Comic Sans MS" FontSize="20"/>
+                <TextBlock Name="txt1" Uid="1" Text="{Binding  Path = NPage[0], StringFormat='{}{0}\ '}" Visibility="{Binding Visible[0]}" FontWeight="{Binding Bold[0]}"  MouseDown="GoPage_MouseDown" FontFamily="Comic Sans MS" FontSize="20"/>
+                <TextBlock Name="txt2" Uid="2" Text="{Binding  Path = NPage[1], StringFormat='{}{0}\ '}" Visibility="{Binding Visible[1]}" FontWeight="{Binding Bold[1]}"  MouseDown="GoPage_MouseDown" FontFamily="Comic Sans MS" FontSize="20"/>
+                <TextBlock Name="txt3" Uid="3" Text="{Binding  Path = NPage[2], StringFormat='{}{0}\ '}" Visibility="{Binding Visible[2]}" FontWeight="{Binding Bold[2]}"  MouseDown="GoPage_MouseDown" FontFamily="Comic Sans MS" FontSize="20"/>
+                <TextBlock Name="txt4" Uid="4" Text="{Binding  Path = NPage[3], StringFormat='{}{0}\ '}" Visibility="{Binding Visible[3]}" FontWeight="{Binding Bold[3]}"  MouseDown="GoPage_MouseDown" FontFamily="Comic Sans MS" FontSize="20"/>
+                <TextBlock Name="txt5" Uid="5" Text="{Binding  Path = NPage[4], StringFormat={}{0}}" Visibility="{Binding Visible[4]}" FontWeight="{Binding Bold[4]}"  MouseDown="GoPage_MouseDown" FontFamily="Comic Sans MS" FontSize="20"/>
+                <TextBlock Name="txtNext" Uid="next" Text=" &gt; "  MouseDown="GoPage_MouseDown" FontFamily="Comic Sans MS" FontSize="20"/>
+                <TextBlock Name="txtNextLast" Uid="next" Visibility="{Binding VisibleButton[1]}" Text=" &#187;" MouseDown="txtNextLast_MouseDown" FontFamily="Comic Sans MS" FontSize="20"/>
+
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
